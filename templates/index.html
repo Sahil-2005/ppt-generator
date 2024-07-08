@@ -88,6 +88,22 @@
             color: #333;
             font-size: 18px;
         }
+        @media (max-width: 600px) {
+            form {
+                padding: 15px 20px;
+            }
+            .student-field, .application-field, .screenshot-field {
+                flex: 1 1 100%;
+            }
+            input[type=text], textarea, select, input[type=file] {
+                width: calc(100% - 20px);
+                margin-bottom: 10px;
+            }
+            button {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+        }
     </style>
     <script>
         function showStudentFields() {
@@ -128,24 +144,21 @@
 <body>
     <h1>Update Presentation</h1>
     <form action="/" method="post" enctype="multipart/form-data">
-        <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image" required><br><br>
-        
         <label for="program">Program:</label>
         <input type="text" id="program" name="program" required><br><br>
-        
+
         <label for="project">Project:</label>
         <input type="text" id="project" name="project" required><br><br>
         
         <label for="domain">Domain:</label>
         <input type="text" id="domain" name="domain" required><br><br>
+
+        <label for="image">Group Image (Upload Image):</label>
+        <input type="file" id="image" name="image" required><br><br>
         
-        <label for="project_info">Project Info:</label>
-        <textarea id="project_info" name="project_info" required></textarea><br><br>
-        
-        <label for="guide">Guide:</label>
+        <label for="guide">Name of Project Guide:</label>
         <input type="text" id="guide" name="guide" required><br><br>
-        
+
         <h3>Student Information:</h3>
         <label for="num_students">Number of students:</label>
         <select id="num_students" name="num_students" onchange="showStudentFields()" required>
@@ -186,7 +199,34 @@
                 <input type="text" id="student_name_4" name="student_name_4" class="student-input">
             </div>
         </div>
+
+        <label for="project_info">Brief Idea of Project:</label>
+        <textarea id="project_info" name="project_info" required></textarea><br><br>
         
+        <h3>Project Screenshots:</h3>
+        <label for="num_screenshots">Number of screenshots:</label>
+        <select id="num_screenshots" name="num_screenshots" onchange="showScreenshotFields()" required>
+            <option value="">Select number of screenshots</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        
+        <div class="screenshot-fields">
+            <div class="screenshot-field" id="screenshot_1" style="display:none;">
+                <label for="screenshot_1" class="screenshot-label">Screenshot 1:</label>
+                <input type="file" id="screenshot_1" name="screenshot_1">
+            </div>
+            <div class="screenshot-field" id="screenshot_2" style="display:none;">
+                <label for="screenshot_2" class="screenshot-label">Screenshot 2:</label>
+                <input type="file" id="screenshot_2" name="screenshot_2">
+            </div>
+            <div class="screenshot-field" id="screenshot_3" style="display:none;">
+                <label for="screenshot_3" class="screenshot-label">Screenshot 3:</label>
+                <input type="file" id="screenshot_3" name="screenshot_3">
+            </div>
+        </div>
+
         <h3>Applications:</h3>
         <label for="num_applications">Number of applications:</label>
         <select id="num_applications" name="num_applications" onchange="showApplicationFields()" required>
@@ -218,30 +258,6 @@
             <div class="application-field" id="application_5" style="display:none;">
                 <label for="application_name_5" class="application-label">Application Name 5:</label>
                 <input type="text" id="application_name_5" name="application_name_5">
-            </div>
-        </div>
-        
-        <h3>Project Screenshots:</h3>
-        <label for="num_screenshots">Number of screenshots:</label>
-        <select id="num_screenshots" name="num_screenshots" onchange="showScreenshotFields()" required>
-            <option value="">Select number of screenshots</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
-        
-        <div class="screenshot-fields">
-            <div class="screenshot-field" id="screenshot_1" style="display:none;">
-                <label for="screenshot_1" class="screenshot-label">Screenshot 1:</label>
-                <input type="file" id="screenshot_1" name="screenshot_1">
-            </div>
-            <div class="screenshot-field" id="screenshot_2" style="display:none;">
-                <label for="screenshot_2" class="screenshot-label">Screenshot 2:</label>
-                <input type="file" id="screenshot_2" name="screenshot_2">
-            </div>
-            <div class="screenshot-field" id="screenshot_3" style="display:none;">
-                <label for="screenshot_3" class="screenshot-label">Screenshot 3:</label>
-                <input type="file" id="screenshot_3" name="screenshot_3">
             </div>
         </div>
         
