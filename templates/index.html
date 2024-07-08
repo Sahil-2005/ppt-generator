@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Presentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        form {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type=text], textarea, select, input[type=file] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h3 {
+            font-size: 20px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        .student-fields, .application-fields, .screenshot-fields {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .student-field, .application-field, .screenshot-field {
+            flex: 1 1 48%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        .student-field input, .application-field input, .screenshot-field input {
+            width: calc(100% - 20px);
+        }
+        .student-label, .application-label, .screenshot-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        .student-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function showStudentFields() {
+            const numStudents = document.getElementById('num_students').value;
+            for (let i = 1; i <= 4; i++) {
+                const div = document.getElementById(`student_${i}`);
+                if (i <= numStudents) {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            }
+        }
+        function showApplicationFields() {
+            const numApplications = document.getElementById('num_applications').value;
+            for (let i = 1; i <= 5; i++) {
+                const div = document.getElementById(`application_${i}`);
+                if (i <= numApplications) {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            }
+        }
+        function showScreenshotFields() {
+            const numScreenshots = document.getElementById('num_screenshots').value;
+            for (let i = 1; i <= 3; i++) {
+                const div = document.getElementById(`screenshot_${i}`);
+                if (i <= numScreenshots) {
+                    div.style.display = 'block';
+                } else {
+                    div.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Update Presentation</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="image">Upload Image:</label>
+        <input type="file" id="image" name="image" required><br><br>
+        
+        <label for="program">Program:</label>
+        <input type="text" id="program" name="program" required><br><br>
+        
+        <label for="project">Project:</label>
+        <input type="text" id="project" name="project" required><br><br>
+        
+        <label for="domain">Domain:</label>
+        <input type="text" id="domain" name="domain" required><br><br>
+        
+        <label for="project_info">Project Info:</label>
+        <textarea id="project_info" name="project_info" required></textarea><br><br>
+        
+        <label for="guide">Guide:</label>
+        <input type="text" id="guide" name="guide" required><br><br>
+        
+        <h3>Student Information:</h3>
+        <label for="num_students">Number of students:</label>
+        <select id="num_students" name="num_students" onchange="showStudentFields()" required>
+            <option value="">Select number of students</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        
+        <div class="student-fields">
+            <div class="student-field" id="student_1" style="display:none;">
+                <div class="student-header">Student 1</div>
+                <label for="roll_no_1" class="student-label">Roll No:</label>
+                <input type="text" id="roll_no_1" name="roll_no_1" class="student-input"><br>
+                <label for="student_name_1" class="student-label">Name:</label>
+                <input type="text" id="student_name_1" name="student_name_1" class="student-input">
+            </div>
+            <div class="student-field" id="student_2" style="display:none;">
+                <div class="student-header">Student 2</div>
+                <label for="roll_no_2" class="student-label">Roll No:</label>
+                <input type="text" id="roll_no_2" name="roll_no_2" class="student-input"><br>
+                <label for="student_name_2" class="student-label">Name:</label>
+                <input type="text" id="student_name_2" name="student_name_2" class="student-input">
+            </div>
+            <div class="student-field" id="student_3" style="display:none;">
+                <div class="student-header">Student 3</div>
+                <label for="roll_no_3" class="student-label">Roll No:</label>
+                <input type="text" id="roll_no_3" name="roll_no_3" class="student-input"><br>
+                <label for="student_name_3" class="student-label">Name:</label>
+                <input type="text" id="student_name_3" name="student_name_3" class="student-input">
+            </div>
+            <div class="student-field" id="student_4" style="display:none;">
+                <div class="student-header">Student 4</div>
+                <label for="roll_no_4" class="student-label">Roll No:</label>
+                <input type="text" id="roll_no_4" name="roll_no_4" class="student-input"><br>
+                <label for="student_name_4" class="student-label">Name:</label>
+                <input type="text" id="student_name_4" name="student_name_4" class="student-input">
+            </div>
+        </div>
+        
+        <h3>Applications:</h3>
+        <label for="num_applications">Number of applications:</label>
+        <select id="num_applications" name="num_applications" onchange="showApplicationFields()" required>
+            <option value="">Select number of applications</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        
+        <div class="application-fields">
+            <div class="application-field" id="application_1" style="display:none;">
+                <label for="application_name_1" class="application-label">Application Name 1:</label>
+                <input type="text" id="application_name_1" name="application_name_1">
+            </div>
+            <div class="application-field" id="application_2" style="display:none;">
+                <label for="application_name_2" class="application-label">Application Name 2:</label>
+                <input type="text" id="application_name_2" name="application_name_2">
+            </div>
+            <div class="application-field" id="application_3" style="display:none;">
+                <label for="application_name_3" class="application-label">Application Name 3:</label>
+                <input type="text" id="application_name_3" name="application_name_3">
+            </div>
+            <div class="application-field" id="application_4" style="display:none;">
+                <label for="application_name_4" class="application-label">Application Name 4:</label>
+                <input type="text" id="application_name_4" name="application_name_4">
+            </div>
+            <div class="application-field" id="application_5" style="display:none;">
+                <label for="application_name_5" class="application-label">Application Name 5:</label>
+                <input type="text" id="application_name_5" name="application_name_5">
+            </div>
+        </div>
+        
+        <h3>Project Screenshots:</h3>
+        <label for="num_screenshots">Number of screenshots:</label>
+        <select id="num_screenshots" name="num_screenshots" onchange="showScreenshotFields()" required>
+            <option value="">Select number of screenshots</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+        
+        <div class="screenshot-fields">
+            <div class="screenshot-field" id="screenshot_1" style="display:none;">
+                <label for="screenshot_1" class="screenshot-label">Screenshot 1:</label>
+                <input type="file" id="screenshot_1" name="screenshot_1">
+            </div>
+            <div class="screenshot-field" id="screenshot_2" style="display:none;">
+                <label for="screenshot_2" class="screenshot-label">Screenshot 2:</label>
+                <input type="file" id="screenshot_2" name="screenshot_2">
+            </div>
+            <div class="screenshot-field" id="screenshot_3" style="display:none;">
+                <label for="screenshot_3" class="screenshot-label">Screenshot 3:</label>
+                <input type="file" id="screenshot_3" name="screenshot_3">
+            </div>
+        </div>
+        
+        <button type="submit">Update Presentation</button>
+    </form>
+</body>
+</html>
